@@ -30,7 +30,7 @@ namespace SportsStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartLineID"), 1L, 1);
 
-                    b.Property<int?>("OrderId")
+                    b.Property<int?>("OrderID")
                         .HasColumnType("int");
 
                     b.Property<long>("ProductID")
@@ -41,7 +41,7 @@ namespace SportsStore.Migrations
 
                     b.HasKey("CartLineID");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("OrderID");
 
                     b.HasIndex("ProductID");
 
@@ -50,11 +50,11 @@ namespace SportsStore.Migrations
 
             modelBuilder.Entity("SportsStore.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -88,7 +88,7 @@ namespace SportsStore.Migrations
                     b.Property<string>("Zip")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("OrderID");
 
                     b.ToTable("Orders");
                 });
@@ -125,7 +125,7 @@ namespace SportsStore.Migrations
                 {
                     b.HasOne("SportsStore.Models.Order", null)
                         .WithMany("Lines")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderID");
 
                     b.HasOne("SportsStore.Models.Product", "Product")
                         .WithMany()
