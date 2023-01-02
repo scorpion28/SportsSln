@@ -12,7 +12,7 @@ namespace SportsStore.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    OrderId = table.Column<int>(type: "int", nullable: false)
+                    OrderID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Line1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -26,7 +26,7 @@ namespace SportsStore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                    table.PrimaryKey("PK_Orders", x => x.OrderID);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,16 +37,16 @@ namespace SportsStore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductID = table.Column<long>(type: "bigint", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: true)
+                    OrderID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CartLine", x => x.CartLineID);
                     table.ForeignKey(
-                        name: "FK_CartLine_Orders_OrderId",
-                        column: x => x.OrderId,
+                        name: "FK_CartLine_Orders_OrderID",
+                        column: x => x.OrderID,
                         principalTable: "Orders",
-                        principalColumn: "OrderId");
+                        principalColumn: "OrderID");
                     table.ForeignKey(
                         name: "FK_CartLine_Products_ProductID",
                         column: x => x.ProductID,
@@ -56,9 +56,9 @@ namespace SportsStore.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartLine_OrderId",
+                name: "IX_CartLine_OrderID",
                 table: "CartLine",
-                column: "OrderId");
+                column: "OrderID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartLine_ProductID",
