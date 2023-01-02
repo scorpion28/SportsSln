@@ -18,7 +18,7 @@ public class EFOrderRepository : IOrderRepository
     public void SaveOrder(Order order)
     {
         context.AttachRange(order.Lines.Select(l => l.Product));
-        if (order.OrderId == 0)
+        if (order.OrderID == 0)
         {
             context.Orders.Add(order);
         }
