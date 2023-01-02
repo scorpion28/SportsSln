@@ -17,7 +17,9 @@ namespace SportsStore.Infrastructure
             urlHelperFactory = helperFactory;
         }
 
-        [ViewContext] [HtmlAttributeNotBound] public ViewContext? ViewContext { get; set; }
+        [ViewContext] 
+        [HtmlAttributeNotBound] 
+        public ViewContext? ViewContext { get; set; }
         public PagingInfo? PageModel { get; set; }
         public string? PageAction { get; set; }
         
@@ -39,8 +41,6 @@ namespace SportsStore.Infrastructure
                 for (int i = 1; i <= PageModel.TotalPages; i++)
                 {
                     TagBuilder tag = new TagBuilder("a");
-                    tag.Attributes["href"] = urlHelper.Action(PageAction,
-                        new { productPage = i });
                     PageUrlValues["productPage"] = i;
                     tag.Attributes["href"] = urlHelper.Action(PageAction,
                         PageUrlValues);
